@@ -3,9 +3,14 @@
   <h1>{{ .Title }}</h1>
   <em>{{ .Summary }}</em>
 
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+
   {{ $slug := .File.Dir | replaceRE "^projects/" "" | replaceRE "/$" "" }}
 
-  <h2>Articles about this project</h2>
+  <h2>Related Articles</h2>
   <ul>
     {{ $related := where site.RegularPages "Params.project" "==" $slug }}
     {{ range $related }}
