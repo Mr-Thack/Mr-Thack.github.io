@@ -5,12 +5,17 @@ html, body {
 }
 
 body {
+  text-align: center;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background: linear-gradient(180deg, #f5f7fa 0%, #c3cfe2 100%);
   font-family: system-ui, sans-serif;
   color: #222;
+}
+
+h1 {
+  font-size: 2rem;
 }
 
 /* --- Main layout --- */
@@ -21,14 +26,13 @@ main {
 
 
 /* --- Home Page Hero --- */
-#hero {
-  text-align: center;
+#hero * {
+  margin: 0.75rem;
 }
 
 
 /* --- Starred Section --- */
 #starred h2 {
-  text-align: center;
   margin-top: 10vh;
 }
 
@@ -75,4 +79,33 @@ footer {
 .not-found p {
   font-size: 1.25rem;
   color: #666;
+}
+
+/* --- Articles --- */
+.articles-list article {
+  background-color: #b3bfd2;
+  border-radius: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.articles-list h2 a {
+  color: #222;
+  text-decoration: none;
+}
+
+.articles-list h2 a:hover {
+  text-decoration: underline;
+}
+
+.article {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.article .content {
+  margin-top: 1.5rem;
+  line-height: 1.6;
 }

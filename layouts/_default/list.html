@@ -3,10 +3,10 @@
   <h1>{{ .Title }}</h1>
   <ul>
     {{ range .Pages }}
-    <li>
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      <p>{{ .Summary }}</p>
-    </li>
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <p>{{ .Summary }}</p>
+      </li>
     {{ end }}
   </ul>
 </section>
