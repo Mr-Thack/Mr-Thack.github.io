@@ -10,3 +10,6 @@ summary = 'Testing out the article system'
 This is text
 
 I am a dumb dumb
+
+
+{{< figure src="pfp.jpg" alt="A Test Image" caption="My Profile Picture on Google" >}}
