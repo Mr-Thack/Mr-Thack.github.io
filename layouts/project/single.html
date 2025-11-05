@@ -1,12 +1,26 @@
 {{ define "main" }}
-<main> 
+<section id="project"> 
+
+  {{ if .Params.starred }}
+    <p>⭐ Featured Project</p>
+  {{ end }}
+
+
   <h1>{{ .Title }}</h1>
+
+  {{ with .Resources.GetMatch .Params.image }}
+    <img src="{{ .RelPermalink }}" alt="{{ $.Title }} preview">
+  {{ end }}
+
   <em>{{ .Summary }}</em>
 
+  <hr>
 
   <div class="content">
     {{ .Content }}
   </div>
+
+  <hr>
 
   {{ $slug := .File.Dir | replaceRE "^projects/" "" | replaceRE "/$" "" }}
 
@@ -19,5 +33,5 @@
       <li>No related articles yet.</li>
     {{ end }}
   </ul>
-</main>
+</section>
 {{ end }}

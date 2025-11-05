@@ -109,3 +109,27 @@ footer {
   margin-top: 1.5rem;
   line-height: 1.6;
 }
+
+/* --- Project --- */
+#project img {
+  display: block;
+  max-width: 600px;
+  margin: 2rem auto;
+  height: auto;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#project hr {
+  margin: 10dvh auto;
+}
+
+.projects-list img {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  float: left;
+  margin: 0 1rem 1rem 0;
+}

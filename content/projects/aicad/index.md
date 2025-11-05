@@ -4,6 +4,7 @@ date = 2025-11-04T10:58:23-05:00
 summary = 'AI + Computer Aided Design "Software" for Architecture'
 starred = true
 type = "project"
+image = "preview.png"
 +++
 
 

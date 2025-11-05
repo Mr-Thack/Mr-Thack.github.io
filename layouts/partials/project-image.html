@@ -1,0 +1,7 @@
+{{ with .Resources.GetMatch .Params.image }}
+  {{ $thumb := .Resize "300x200"}}
+    <img src="{{ $thumb.RelPermalink }}" alt="{{ $.Title }}">
+  {{ else }}
+    {{ $fallback := (resources.Get "images/blank.jpg").Resize "300x200" }}
+    <img src="{{ $fallback.RelPermalink }}" alt="No Preview Yet">
+{{ end }}

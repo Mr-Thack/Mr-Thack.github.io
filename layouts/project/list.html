@@ -2,16 +2,14 @@
 <section class="projects">
   <h1>Projects</h1>
 
-  {{ $starred := where .Pages "Params.starred" true | sort "Date" "desc" }}
-  {{ $others := where .Pages "Params.starred" "!=" true | sort "Date" "desc" }}
+  {{ $projects := where .Pages "Type" "project" }}
+  {{ $starred := where $projects "Params.starred" true }}
+  {{ $others := where $projects "Params.starred" "ne" true }}
 
   <h2>⭐ Featured Projects</h2>
   <ul>
-    {{ range $starred }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a><br>
-        {{ with .Summary }}<small>{{ . }}</small>{{ end }}
-      </li>
+    {{ range sort $starred "Date" "desc" }}
+      {{ partial "project-card.html" . }}
     {{ else }}
       <li>No featured projects yet.</li>
     {{ end }}
@@ -19,11 +17,8 @@
 
   <h2>All Projects</h2>
   <ul>
-    {{ range $others }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a><br>
-        {{ with .Summary }}<small>{{ . }}</small>{{ end }}
-      </li>
+    {{ range sort $others "Date" "desc" }}
+      {{ partial "project-card.html" . }}
     {{ else }}
       <li>No other projects yet.</li>
     {{ end }}

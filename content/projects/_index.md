@@ -1,5 +1,6 @@
 +++
 title = "Projects"
 summary = "A collection of things I’ve built, explored, or broken along the way."
-type = "section"
+type = "project"
+layout = "list"
 +++

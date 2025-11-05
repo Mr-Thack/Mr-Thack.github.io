@@ -2,15 +2,13 @@
   <h2>Featured Projects</h2>
   <div class="carousel">
     {{ range where .Site.RegularPages "Section" "projects" }}
-    {{ if .Params.starred }}
-    <div class="slide">
-      {{ with .Params.image }}
-      <img src="{{ . }}" alt="{{ $.Title }}">
+      {{ if .Params.starred }}
+      <div class="slide">
+        {{ partial "project-image.html" . }}
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Params.summary }}</p>
+      </div>
       {{ end }}
-      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-      <p>{{ .Params.summary }}</p>
-    </div>
-    {{ end }}
     {{ end }}
   </div>
 </section>
