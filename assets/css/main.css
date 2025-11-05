@@ -1,4 +1,10 @@
 /* ==========================================
+Imports Must Go On Top
+========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ==========================================
 CSS VARIABLES - Easy Theme Customization
 ========================================== */
 :root {
@@ -38,8 +44,6 @@ CSS VARIABLES - Easy Theme Customization
 /* ==========================================
 GLOBAL STYLES
 ========================================== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
