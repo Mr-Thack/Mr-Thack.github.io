@@ -465,6 +465,7 @@ SINGLE ARTICLE PAGE
 .article-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
   margin-bottom: 2rem;
 }
@@ -516,15 +517,17 @@ SINGLE ARTICLE PAGE
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 2rem;
-  padding: 0.75rem 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0.5rem 1rem;
   background: rgba(255, 107, 53, 0.1);
   border: 1px solid var(--accent);
   border-radius: 8px;
   text-decoration: none;
   color: var(--accent);
-  font-weight: 600;
+  font-weight: 500;
   transition: all 0.2s ease;
+  font-size: 0.9rem;
 }
 
 .related-project-link:hover {

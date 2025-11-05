@@ -1,13 +1,15 @@
 {{ define "main" }}
 <section id="project"> 
-
-  {{ if .Params.starred }}
-    <p>⭐ Featured Project</p>
-  {{ end }}
+  <div class="article-header">
+    <a href="/projects/" class="back-button">← All Projects</a>
+  </div>
 
   <h1>{{ .Title }}</h1>
 
   <div class="project-meta">
+    {{ if .Params.starred }}
+      <span>⭐ Featured Project</span>
+    {{ end }}
     {{ with .Date }}
       <span>📅 Started: {{ .Format "Jan 1st, 2006" }}</span>
     {{ end }}

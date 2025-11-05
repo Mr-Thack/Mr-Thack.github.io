@@ -2,6 +2,15 @@
 <article class="article">
   <div class="article-header">
     <a href="/articles/" class="back-button">← All Articles</a>
+  
+    {{ with .Params.project }}
+      {{ $proj := site.GetPage (printf "projects/%s/index.md" .) }}
+      {{ if $proj }}
+        <a href="{{ $proj.RelPermalink }}" class="related-project-link">
+          Related Project: {{ $proj.Title }} →
+        </a>
+      {{ end }}
+    {{ end }}
   </div>
 
   <h1>{{ .Title }}</h1>
@@ -10,14 +19,5 @@
   <div class="content">
     {{ .Content }}
   </div>
-
-  {{ with .Params.project }}
-    {{ $proj := site.GetPage (printf "projects/%s/index.md" .) }}
-    {{ if $proj }}
-      <a href="{{ $proj.RelPermalink }}" class="related-project-link">
-        Related Project: {{ $proj.Title }} →
-      </a>
-    {{ end }}
-  {{ end }}
 </article>
 {{ end }}
