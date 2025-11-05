@@ -3,13 +3,13 @@ CSS VARIABLES - Easy Theme Customization
 ========================================== */
 :root {
   /* Light Mode Colors */
-  --bg-gradient-start: #fff0e6;
-  --bg-gradient-end: #ffd4b8;
+  --bg-gradient-start: #ffb380;
+  --bg-gradient-end: #6baed6;
   --text-primary: #1a1a1a;
   --text-secondary: #555;
-  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-bg: rgba(255, 255, 255, 0.5);
   --card-border: rgba(255, 107, 53, 0.25);
-  --nav-bg: rgba(255, 255, 255, 0.75);
+  --nav-bg: rgba(255, 255, 255, 0.4);
   --footer-bg: rgba(255, 255, 255, 0.6);
   --accent: #ff6b35;
   --accent-hover: #e55a2b;
@@ -24,10 +24,10 @@ CSS VARIABLES - Easy Theme Customization
   --bg-gradient-end: #1a1a2e;
   --text-primary: #e8e8e8;
   --text-secondary: #b8b8b8;
-  --card-bg: rgba(30, 30, 46, 0.9);
+  --card-bg: rgba(30, 30, 46, 0.6);
   --card-border: rgba(255, 107, 53, 0.3);
-  --nav-bg: rgba(20, 20, 30, 0.85);
-  --footer-bg: rgba(20, 20, 30, 0.8);
+  --nav-bg: rgba(20, 20, 30, 0.7);
+  --footer-bg: rgba(20, 20, 30, 0.33);
   --accent: #ff8557;
   --accent-hover: #ffa07a;
   --link-color: #60a5fa;
@@ -52,7 +52,7 @@ html, body {
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  background: linear-gradient(160deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
   background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
