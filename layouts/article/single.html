@@ -1,7 +1,12 @@
 {{ define "main" }}
 <article class="article">
+  <div class="article-header">
+    <a href="/articles/" class="back-button">← All Articles</a>
+  </div>
+
   <h1>{{ .Title }}</h1>
   <time>{{ .Date.Format "Jan 2, 2006" }}</time>
+
   <div class="content">
     {{ .Content }}
   </div>
@@ -9,7 +14,9 @@
   {{ with .Params.project }}
     {{ $proj := site.GetPage (printf "projects/%s/index.md" .) }}
     {{ if $proj }}
-      <p><a href="{{ $proj.RelPermalink }}">← Related Project Page: {{ $proj.Title }}</a></p>
+      <a href="{{ $proj.RelPermalink }}" class="related-project-link">
+        Related Project: {{ $proj.Title }} →
+      </a>
     {{ end }}
   {{ end }}
 </article>

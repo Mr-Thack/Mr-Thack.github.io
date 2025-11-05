@@ -3,33 +3,33 @@ CSS VARIABLES - Easy Theme Customization
 ========================================== */
 :root {
   /* Light Mode Colors */
-  --bg-gradient-start: #fff5eb;
-  --bg-gradient-end: #4a90e2;
+  --bg-gradient-start: #fff0e6;
+  --bg-gradient-end: #ffd4b8;
   --text-primary: #1a1a1a;
   --text-secondary: #555;
   --card-bg: rgba(255, 255, 255, 0.85);
-  --card-border: rgba(74, 144, 226, 0.2);
+  --card-border: rgba(255, 107, 53, 0.25);
   --nav-bg: rgba(255, 255, 255, 0.75);
   --footer-bg: rgba(255, 255, 255, 0.6);
   --accent: #ff6b35;
   --accent-hover: #e55a2b;
-  --link-color: #2563eb;
+  --link-color: #4a90e2;
   --shadow: rgba(0, 0, 0, 0.1);
   --shadow-hover: rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="dark"] {
   /* Dark Mode Colors */
-  --bg-gradient-start: #1a1a2e;
-  --bg-gradient-end: #0f3460;
+  --bg-gradient-start: #2d1810;
+  --bg-gradient-end: #1a1a2e;
   --text-primary: #e8e8e8;
   --text-secondary: #b8b8b8;
   --card-bg: rgba(30, 30, 46, 0.9);
   --card-border: rgba(255, 107, 53, 0.3);
   --nav-bg: rgba(20, 20, 30, 0.85);
   --footer-bg: rgba(20, 20, 30, 0.8);
-  --accent: #ff6b35;
-  --accent-hover: #ff8557;
+  --accent: #ff8557;
+  --accent-hover: #ffa07a;
   --link-color: #60a5fa;
   --shadow: rgba(0, 0, 0, 0.3);
   --shadow-hover: rgba(0, 0, 0, 0.5);
@@ -88,14 +88,20 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
-  padding: 1.5rem 2rem;
+  gap: 4rem;
+  padding: 1rem 2rem;
   background: var(--nav-bg);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--card-border);
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.nav-links {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
 }
 
 nav a {
@@ -129,13 +135,19 @@ nav a:hover::after {
 /* Dark Mode Toggle */
 .theme-toggle {
   background: var(--card-bg);
-  border: 2px solid var(--card-border);
-  border-radius: 50px;
-  padding: 0.5rem 1rem;
+  border: 1px solid var(--card-border);
+  border-radius: 50%;
+  padding: 0.5rem;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1rem;
   transition: all 0.3s ease;
-  margin-left: 1rem;
+  position: absolute;
+  right: 2rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .theme-toggle:hover {
@@ -339,6 +351,9 @@ PROJECTS PAGE - GRID LAYOUT
   box-shadow: 0 4px 12px var(--shadow);
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
 }
 
 .project-card:hover {
@@ -362,6 +377,7 @@ PROJECTS PAGE - GRID LAYOUT
   color: var(--text-primary);
   margin-bottom: 0.5rem;
   display: block;
+  pointer-events: none;
 }
 
 .project-card a:hover {
@@ -381,6 +397,7 @@ ARTICLES PAGE - CARD LIST
 .articles-list {
   max-width: 900px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .articles-list h1 {
@@ -396,6 +413,7 @@ ARTICLES PAGE - CARD LIST
   margin-bottom: 2rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px var(--shadow);
+  text-align: left;
 }
 
 .articles-list article:hover {
@@ -444,6 +462,35 @@ SINGLE ARTICLE PAGE
   box-shadow: 0 8px 32px var(--shadow);
 }
 
+.article-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.back-button:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  transform: translateX(-4px);
+}
+
 .article h1 {
   margin-bottom: 0.5rem;
 }
@@ -465,6 +512,27 @@ SINGLE ARTICLE PAGE
   margin: 2rem 0;
 }
 
+.related-project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(255, 107, 53, 0.1);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.related-project-link:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateX(4px);
+}
+
 /* ==========================================
 SINGLE PROJECT PAGE
 ========================================== */
@@ -479,6 +547,21 @@ SINGLE PROJECT PAGE
 
 #project h1 {
   margin-bottom: 1rem;
+}
+
+.project-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.project-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 #project img {
@@ -537,7 +620,7 @@ FOOTER
 ========================================== */
 footer {
   text-align: center;
-  padding: 2rem;
+  padding: 1.25rem 2rem 1rem;
   background: var(--footer-bg);
   backdrop-filter: blur(10px);
   border-top: 1px solid var(--card-border);
@@ -597,8 +680,14 @@ RESPONSIVE DESIGN
 /* Tablet */
 @media (max-width: 768px) {
   nav {
-    gap: 1.5rem;
+    gap: 2rem;
     padding: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-links {
+    gap: 2rem;
   }
 
   nav a {
@@ -606,9 +695,8 @@ RESPONSIVE DESIGN
   }
 
   .theme-toggle {
-    margin-left: 0.5rem;
-    padding: 0.4rem 0.8rem;
-    font-size: 1rem;
+    position: static;
+    margin-top: 0.5rem;
   }
 
   #hero h1 {
@@ -645,8 +733,16 @@ RESPONSIVE DESIGN
 
   nav {
     gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .theme-toggle {
+    position: static;
   }
 
   #hero {

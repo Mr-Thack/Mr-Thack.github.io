@@ -5,8 +5,16 @@
     <p>⭐ Featured Project</p>
   {{ end }}
 
-
   <h1>{{ .Title }}</h1>
+
+  <div class="project-meta">
+    {{ with .Date }}
+      <span>📅 Started: {{ .Format "Jan 1st, 2006" }}</span>
+    {{ end }}
+    {{ with .Params.end_date }}
+      <span>🏁 Completed: {{ . }}</span>
+    {{ end }}
+  </div>
 
   {{ with .Resources.GetMatch .Params.image }}
     <img src="{{ .RelPermalink }}" alt="{{ $.Title }} preview">

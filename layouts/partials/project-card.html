@@ -1,14 +1,13 @@
-<li class="project-card">
+<a href="{{ .RelPermalink }}" class="project-card">
   {{ partial "project-image.html" . }}
 
-  <br>
-    
-  <a href="{{ .RelPermalink }}">
+  <span style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">
     {{ .Title }}
-  </a>
+  </span>
+
   {{ with .Summary }}
     <small>{{ . }}</small>
   {{ else }}
     <small>No summary available.</small>
   {{ end }}
-</li>
+</a>
