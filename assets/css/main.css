@@ -1,3 +1,49 @@
+/* ==========================================
+CSS VARIABLES - Easy Theme Customization
+========================================== */
+:root {
+  /* Light Mode Colors */
+  --bg-gradient-start: #fff5eb;
+  --bg-gradient-end: #4a90e2;
+  --text-primary: #1a1a1a;
+  --text-secondary: #555;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(74, 144, 226, 0.2);
+  --nav-bg: rgba(255, 255, 255, 0.75);
+  --footer-bg: rgba(255, 255, 255, 0.6);
+  --accent: #ff6b35;
+  --accent-hover: #e55a2b;
+  --link-color: #2563eb;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] {
+  /* Dark Mode Colors */
+  --bg-gradient-start: #1a1a2e;
+  --bg-gradient-end: #0f3460;
+  --text-primary: #e8e8e8;
+  --text-secondary: #b8b8b8;
+  --card-bg: rgba(30, 30, 46, 0.9);
+  --card-border: rgba(255, 107, 53, 0.3);
+  --nav-bg: rgba(20, 20, 30, 0.85);
+  --footer-bg: rgba(20, 20, 30, 0.8);
+  --accent: #ff6b35;
+  --accent-hover: #ff8557;
+  --link-color: #60a5fa;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-hover: rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================
+GLOBAL STYLES
+========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -5,131 +51,637 @@ html, body {
 }
 
 body {
-  text-align: center;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.6;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: linear-gradient(180deg, #f5f7fa 0%, #c3cfe2 100%);
-  font-family: system-ui, sans-serif;
-  color: #222;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-h1 {
-  font-size: 2rem;
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
 }
 
-/* --- Main layout --- */
-main {
-  flex: 1; /* pushes footer down */
-  padding: 2rem;
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+a {
+  color: var(--link-color);
+  transition: color 0.2s ease;
 }
 
-
-/* --- Home Page Hero --- */
-#hero * {
-  margin: 0.75rem;
+a:hover {
+  color: var(--accent);
 }
 
-
-/* --- Starred Section --- */
-#starred h2 {
-  margin-top: 10vh;
-}
-
-
-/* --- Navigation --- */
+/* ==========================================
+NAVIGATION
+========================================== */
 nav {
   display: flex;
-  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
   padding: 1.5rem 2rem;
-  font-weight: 600;
+  background: var(--nav-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--card-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 nav a {
   text-decoration: none;
-  color: #333;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: var(--accent);
 }
 
-/* --- Footer --- */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(6px);
-  font-size: 0.9rem;
-  color: #444;
-  margin-top: auto;
+nav a:hover::after {
+  width: 100%;
 }
 
-/* --- 404 Page --- */
-.not-found {
-  text-align: center;
-  margin-top: 10vh;
+/* Dark Mode Toggle */
+.theme-toggle {
+  background: var(--card-bg);
+  border: 2px solid var(--card-border);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
 }
 
-.not-found h1 {
-  font-size: 6rem;
-  margin: 0;
+.theme-toggle:hover {
+  transform: scale(1.1);
+  border-color: var(--accent);
 }
 
-.not-found p {
-  font-size: 1.25rem;
-  color: #666;
-}
-
-/* --- Articles --- */
-.articles-list article {
-  background-color: #b3bfd2;
-  border-radius: 2rem;
-  padding-top: 0.5rem;
-  padding-bottom: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.articles-list h2 a {
-  color: #222;
-  text-decoration: none;
-}
-
-.articles-list h2 a:hover {
-  text-decoration: underline;
-}
-
-.article {
-  max-width: 700px;
+/* ==========================================
+MAIN CONTENT AREA
+========================================== */
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
 }
 
-.article .content {
-  margin-top: 1.5rem;
+/* ==========================================
+HOME PAGE - HERO SECTION
+========================================== */
+#hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 3rem;
+}
+
+#hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--link-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+#hero em {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  font-style: normal;
+}
+
+/* ==========================================
+STARRED PROJECTS CAROUSEL
+========================================== */
+#starred {
+  margin: 4rem auto;
+  max-width: 900px;
+}
+
+#starred h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px var(--shadow);
+  padding: 2rem;
+}
+
+.carousel-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  text-align: center;
+  padding: 1rem;
+}
+
+.slide img {
+  max-width: 100%;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow);
+  object-fit: cover;
+}
+
+.slide h3 {
+  margin: 1rem 0 0.5rem;
+}
+
+.slide h3 a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.slide h3 a:hover {
+  color: var(--accent);
+}
+
+.slide p {
+  color: var(--text-secondary);
+  font-size: 1rem;
   line-height: 1.6;
 }
 
-/* --- Project --- */
-#project img {
-  display: block;
-  max-width: 600px;
-  margin: 2rem auto;
-  height: auto;
+/* Carousel Controls */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--card-bg);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.2s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel:hover .carousel-btn {
+  opacity: 1;
+}
+
+.carousel-btn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.carousel-btn.prev {
+  left: 1rem;
+}
+
+.carousel-btn.next {
+  right: 1rem;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--card-border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+/* ==========================================
+PROJECTS PAGE - GRID LAYOUT
+========================================== */
+.projects {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.projects h2 {
+  margin: 3rem 0 1.5rem;
+  color: var(--text-primary);
+}
+
+.projects ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px var(--shadow-hover);
+  border-color: var(--accent);
+}
+
+.project-card img {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.project-card a {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.project-card a:hover {
+  color: var(--accent);
+}
+
+.project-card small {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  display: block;
+  margin-top: auto;
+}
+
+/* ==========================================
+ARTICLES PAGE - CARD LIST
+========================================== */
+.articles-list {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.articles-list h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.articles-list article {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.articles-list article:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px var(--shadow-hover);
+  border-color: var(--accent);
+}
+
+.articles-list h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+}
+
+.articles-list h2 a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.articles-list h2 a:hover {
+  color: var(--accent);
+}
+
+.articles-list .summary {
+  color: var(--text-secondary);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.articles-list time {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ==========================================
+SINGLE ARTICLE PAGE
+========================================== */
+.article {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 8px 32px var(--shadow);
+}
+
+.article h1 {
+  margin-bottom: 0.5rem;
+}
+
+.article time {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.article .content {
+  margin-top: 2rem;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.article .content img {
+  max-width: 100%;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin: 2rem 0;
+}
+
+/* ==========================================
+SINGLE PROJECT PAGE
+========================================== */
+#project {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 3rem;
+  box-shadow: 0 8px 32px var(--shadow);
+}
+
+#project h1 {
+  margin-bottom: 1rem;
+}
+
+#project img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  border-radius: 12px;
+  margin: 2rem auto;
+  display: block;
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+#project em {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+  font-style: normal;
 }
 
 #project hr {
-  margin: 10dvh auto;
+  border: none;
+  border-top: 2px solid var(--card-border);
+  margin: 3rem 0;
 }
 
-.projects-list img {
-  width: 200px;
-  height: auto;
-  object-fit: cover;
-  border-radius: 6px;
-  float: left;
-  margin: 0 1rem 1rem 0;
+#project .content {
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+#project h2 {
+  margin-top: 2rem;
+}
+
+#project ul {
+  list-style: none;
+  padding: 0;
+}
+
+#project ul li {
+  background: rgba(255, 107, 53, 0.1);
+  border-left: 3px solid var(--accent);
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 4px;
+}
+
+#project ul li a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ==========================================
+FOOTER
+========================================== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: var(--footer-bg);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--card-border);
+  margin-top: 4rem;
+}
+
+footer p {
+  margin: 0.5rem 0;
+  color: var(--text-secondary);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.footer-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+/* ==========================================
+404 PAGE
+========================================== */
+.not-found {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.not-found h1 {
+  font-size: 8rem;
+  margin: 0;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--link-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.not-found p {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  margin-top: 1rem;
+}
+
+/* ==========================================
+RESPONSIVE DESIGN
+========================================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+  nav {
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+
+  .theme-toggle {
+    margin-left: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+  }
+
+  #hero h1 {
+    font-size: 2.5rem;
+  }
+
+  #hero em {
+    font-size: 1rem;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+
+  .projects ul {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .article, #project {
+    padding: 2rem;
+  }
+
+  .carousel-btn {
+    display: none;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  main {
+    padding: 1rem;
+  }
+
+  nav {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  #hero {
+    padding: 2rem 1rem;
+  }
+
+  #hero h1 {
+    font-size: 2rem;
+  }
+
+  .projects ul {
+    grid-template-columns: 1fr;
+  }
+
+  .article, #project {
+    padding: 1.5rem;
+  }
+
+  .carousel {
+    padding: 1rem;
+  }
+
+  .not-found h1 {
+    font-size: 5rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+/* Touch device optimization for carousel */
+@media (hover: none) and (pointer: coarse) {
+  .carousel-btn {
+    display: none !important;
+  }
 }

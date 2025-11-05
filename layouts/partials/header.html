@@ -2,4 +2,38 @@
   <a href="/">Home</a>
   <a href="/projects/">Projects</a>
   <a href="/articles/">Articles</a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+    <span class="theme-icon">🌙</span>
+  </button>
 </nav>
+
+<script>
+  // Dark mode toggle functionality
+  function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    const icon = document.querySelector('.theme-icon');
+
+    html.setAttribute('data-theme', newTheme);
+    icon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+
+    // Save preference to localStorage
+    try {
+      localStorage.setItem('theme', newTheme);
+    } catch (e) {
+      // Ignore if localStorage is not available
+    }
+  }
+
+  // Load saved theme preference on page load
+  (function() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const icon = document.querySelector('.theme-icon');
+
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    if (icon) {
+      icon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    }
+  })();
+</script>
