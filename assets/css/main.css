@@ -86,7 +86,7 @@ a:hover {
 }
 
 /* ==========================================
-NAVIGATION
+NAVIGATION 
 ========================================== */
 nav {
   display: flex;
@@ -686,10 +686,13 @@ RESPONSIVE DESIGN
 
 /* Tablet */
 @media (max-width: 768px) {
+  /* Navigation */
   nav {
+    display: flex;
+    flex-direction: row;
     gap: 2rem;
-    padding: 1rem;
-    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    flex-wrap: nowrap;
     justify-content: center;
   }
 
@@ -702,10 +705,13 @@ RESPONSIVE DESIGN
   }
 
   .theme-toggle {
-    position: static;
-    margin-top: 0.5rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
   }
 
+  /* Hero */
   #hero h1 {
     font-size: 2.5rem;
   }
@@ -714,19 +720,23 @@ RESPONSIVE DESIGN
     font-size: 1rem;
   }
 
+  /* Typography */
   h1 { font-size: 2rem; }
   h2 { font-size: 1.5rem; }
   h3 { font-size: 1.25rem; }
 
+  /* Projects */
   .projects ul {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
   }
 
+  /* Articles & Project pages */
   .article, #project {
     padding: 2rem;
   }
 
+  /* Carousel */
   .carousel-btn {
     display: none;
   }
@@ -734,24 +744,43 @@ RESPONSIVE DESIGN
 
 /* Mobile */
 @media (max-width: 480px) {
+  /* Main content */
   main {
     padding: 1rem;
   }
 
+  /* Navigation - Compact single-row layout */
   nav {
-    gap: 1rem;
-    flex-direction: column;
-    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    padding: 0.6rem 0.5rem;
+    justify-content: space-evenly;
+    align-items: center;
   }
 
   .nav-links {
-    gap: 1.5rem;
+    display: contents; /* Make links direct children of nav */
+  }
+
+  nav a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.4rem 0.3rem;
+    white-space: nowrap;
   }
 
   .theme-toggle {
     position: static;
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+    padding: 0.4rem;
+    flex-shrink: 0;
+    margin: 0;
   }
 
+  /* Hero */
   #hero {
     padding: 2rem 1rem;
   }
@@ -760,25 +789,51 @@ RESPONSIVE DESIGN
     font-size: 2rem;
   }
 
+  /* Projects */
   .projects ul {
     grid-template-columns: 1fr;
   }
 
+  /* Articles & Project pages */
   .article, #project {
     padding: 1.5rem;
   }
 
+  /* Carousel */
   .carousel {
     padding: 1rem;
   }
 
+  /* 404 */
   .not-found h1 {
     font-size: 5rem;
   }
 
+  /* Footer */
   .footer-links {
     flex-direction: column;
     gap: 0.75rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  nav {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 0.25rem;
+    gap: 0.25rem;
+  }
+
+  nav a {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.2rem;
+  }
+
+  .theme-toggle {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
   }
 }
 
