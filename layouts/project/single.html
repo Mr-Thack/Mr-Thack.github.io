@@ -16,6 +16,13 @@
     {{ with .Params.end_date }}
       <span>🏁 Completed: {{ . }}</span>
     {{ end }}
+
+    {{ with .Params.code_url }}
+      <span><a href="{{ . }}" target="_blank" class="code-link">Code</a></span>
+    {{ end }}
+    {{ with .Params.demo_url }}
+    <span><a href="{{ . }}" target="_blank" class="demo-link">Demo</a></span>
+    {{ end }}
   </div>
 
   {{ with .Resources.GetMatch .Params.image }}
